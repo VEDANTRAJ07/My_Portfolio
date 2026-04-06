@@ -1,170 +1,297 @@
-/* Core Variables for easy theming */
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Modern Variables & Color Palette --- */
 :root {
-    --bg-color: #f4f4f9;
-    --text-color: #333333;
-    --primary-color: #0056b3;
+    /* Light Mode (Slate & Indigo) */
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --text-muted: #475569;
+    --primary-color: #4f46e5; /* Vibrant Indigo */
+    --primary-hover: #4338ca;
     --card-bg: #ffffff;
-    --nav-bg: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.85); /* Semi-transparent for blur */
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Mode Variables */
 .dark-mode {
-    --bg-color: #121212;
-    --text-color: #f4f4f9;
-    --primary-color: #4da3ff;
-    --card-bg: #1e1e1e;
-    --nav-bg: #1e1e1e;
+    /* Dark Mode (Deep Navy & Soft Indigo) */
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary-color: #6366f1; 
+    --primary-hover: #818cf8;
+    --card-bg: #1e293b;
+    --nav-bg: rgba(15, 23, 42, 0.85);
+    --border-color: #334155;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* Base Styles */
+/* --- Base & Smooth Transitions --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.7;
+    /* Smooth transition for dark mode toggling */
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Navigation */
+/* --- Navigation (Glassmorphism Effect) --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 1.2rem 5%;
     background-color: var(--nav-bg);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px); /* Creates the frosted glass look */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.5s ease;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Underline animation on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
 }
 
-button#theme-toggle {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    background: none;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    border-radius: 5px;
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-/* Sections General */
+button#theme-toggle {
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 50px; /* Pill shape */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+button#theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Typography & Sections --- */
 section {
-    padding: 4rem 5%;
+    padding: 5rem 5%;
     text-align: center;
 }
 
-h2 {
-    margin-bottom: 2rem;
-    color: var(--primary-color);
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
-/* Home Section */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+p {
+    color: var(--text-muted);
+}
+
+/* --- Home/Hero Section --- */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
+    min-height: 80vh;
+    /* Soft gradient background */
+    background: radial-gradient(circle at top, var(--card-bg), var(--bg-color));
 }
 
 .profile-img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
-    border: 4px solid var(--primary-color);
+    margin-bottom: 1.5rem;
+    border: 5px solid var(--card-bg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease;
 }
 
-/* Content Boxes (About, Contact) */
+.profile-img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* --- Content Boxes & Cards --- */
 .content-box {
     background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 600px;
+    padding: 3rem;
+    border-radius: 16px;
+    max-width: 700px;
     margin: 0 auto;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-md);
     text-align: left;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.5s ease;
 }
 
-/* Grid Layouts (Achievements, Projects) */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
 }
 
 .card {
     background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
     text-align: left;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    /* Smooth hover effect */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background-color 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
 }
 
 .card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
 }
 
+.card p {
+    flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+/* --- Buttons --- */
 .btn {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.5rem;
     background-color: var(--primary-color);
-    color: white;
+    color: #ffffff !important; /* Force white text */
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Gallery Layout */
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+/* --- Gallery Section --- */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
 .gallery-grid img {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+    box-shadow: var(--shadow-hover);
+    z-index: 10;
 }
 
+/* --- Footer --- */
 footer {
     text-align: center;
     padding: 2rem;
     background-color: var(--nav-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
 }
