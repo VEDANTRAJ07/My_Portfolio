@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Student Portfolio</title>
+    <title>My Digital Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <ul>
+        <div class="logo">MyPortfolio</div>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Me</a></li>
             <li><a href="#achievements">Achievements</a></li>
@@ -16,45 +17,90 @@
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button id="darkModeToggle">Toggle Dark Mode</button>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </nav>
 
-    <section id="home">
-        <img src="assets/images/your-photo.jpg" alt="My Profile Picture">
-        <h1>Your Name</h1>
-        <p>A short, engaging introduction about who you are.</p>
+    <section id="home" class="hero">
+        <img src="assets/profile.jpg" alt="My Profile Photo" class="profile-img">
+        <h1>Hi, I'm [YOUR NAME]</h1>
+        <p>A passionate student exploring web development, AI, and design thinking.</p>
     </section>
 
     <section id="about">
         <h2>About Me</h2>
-        <p><strong>Education:</strong> Your degree/school</p>
-        <p><strong>Interests:</strong> What you like doing</p>
-        <p><strong>Goals & Strengths:</strong> What you excel at and aim for</p>
+        <div class="content-box">
+            <p><strong>Education:</strong> [YOUR DEGREE/SCHOOL, e.g., B.Tech in Computer Science]</p>
+            <p><strong>Interests:</strong> [e.g., Coding, Machine Learning, Reading, Hiking]</p>
+            <p><strong>Goals:</strong> [e.g., To become a full-stack developer and build impactful software]</p>
+            <p><strong>Strengths:</strong> [e.g., Problem-solving, quick learner, teamwork]</p>
+        </div>
     </section>
 
     <section id="achievements">
         <h2>Achievements & Certificates</h2>
-        <ul>
-            <li>Coursera Certificate in [Topic]</li>
-            <li>NetAcad Certificate in [Topic]</li>
-            <li>Yuva AI Certificate</li>
-        </ul>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Coursera Certificate</h3>
+                <p>Completed the [COURSE NAME] course, gaining skills in [SKILL].</p>
+            </div>
+            <div class="card">
+                <h3>NetAcad Certificate</h3>
+                <p>Certified in [COURSE/SKILL NAME] through Cisco Networking Academy.</p>
+            </div>
+            <div class="card">
+                <h3>Yuva AI Certificate</h3>
+                <p>Successfully completed the Yuva AI program focused on artificial intelligence fundamentals.</p>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
         <h2>My Projects</h2>
-        <div class="project-card">
-            <h3>Ai4A Project</h3>
-            <img src="assets/projects/ai4a-screenshot.png" alt="Ai4A Screen">
-            <p>Description of the project.</p>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Ai4A Project</h3>
+                <img src="assets/ai4a-screenshot.jpg" alt="Ai4A Project">
+                <p>Description: [Briefly describe what this project was and what you did].</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="card">
+                <h3>Design Thinking Project</h3>
+                <img src="assets/design-screenshot.jpg" alt="Design Thinking">
+                <p>Description: [Briefly describe the problem you solved using design thinking].</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
+            <div class="card">
+                <h3>ACE Project</h3>
+                <img src="assets/ace-screenshot.jpg" alt="ACE Project">
+                <p>Description: [Briefly describe the ACE project details here].</p>
+                <a href="#" class="btn">View Project</a>
+            </div>
         </div>
-        <div class="project-card">
-            <h3>Design Thinking Project</h3>
-            </div>
-        <div class="project-card">
-            <h3>ACE Project</h3>
-            </div>
     </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p>A collection of my certificates and event photographs.</p>
+        <div class="gallery-grid">
+            <img src="assets/cert1.jpg" alt="Certificate 1">
+            <img src="assets/cert2.jpg" alt="Certificate 2">
+            <img src="assets/photo1.jpg" alt="Event Photo">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="content-box">
+            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p>Phone: +91 [YOUR NUMBER]</p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+            <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [YOUR NAME]. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
